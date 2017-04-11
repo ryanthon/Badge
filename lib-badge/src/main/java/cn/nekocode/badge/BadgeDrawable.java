@@ -246,8 +246,13 @@ public class BadgeDrawable extends Drawable {
 
             default:
                 String value = String.valueOf(_CONFIG.number);
-                badgeWidth = (int) paint.measureText(value);
+                badgeWidth = (int) (paint.measureText(value) + (_CONFIG.textSize * 0.8));
                 badgeHeight = (int) (_CONFIG.textSize * 1.4f);
+
+                if (badgeWidth < badgeHeight) {
+                    badgeWidth = badgeHeight;
+                }
+
                 setCornerRadius(badgeHeight);
         }
 
