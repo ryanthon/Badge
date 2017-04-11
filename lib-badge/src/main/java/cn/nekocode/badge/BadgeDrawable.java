@@ -382,7 +382,7 @@ public class BadgeDrawable extends Drawable {
             default:
                 paint.setColor(_CONFIG.textColor);
                 canvas.drawText(
-                        cutNumber(_CONFIG.number, badgeWidth),
+                        String.valueOf(_CONFIG.number),
                         textCx,
                         textCy + textCyOffset,
                         paint);
@@ -412,14 +412,6 @@ public class BadgeDrawable extends Drawable {
     @Override
     public int getOpacity() {
         return PixelFormat.UNKNOWN;
-    }
-
-    private String cutNumber(int number, int width) {
-        String text = String.valueOf(number);
-        if (paint.measureText(text) < width)
-            return text;
-
-        return "…";
     }
 
     private String cutText(String text, int width) {
